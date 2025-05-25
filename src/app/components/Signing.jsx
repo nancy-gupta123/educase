@@ -41,13 +41,17 @@ export default function Signin() {
 
   return (
     <div className="h-screen w-screen flex items-center justify-center bg-gradient-to-r from-indigo-50 via-purple-50 to-pink-50">
-      <div className="bg-white p-8 w-full max-w-md rounded-xl shadow-2xl border border-gray-200 overflow-y-auto">
-        <h1 className="text-3xl font-extrabold font-serif text-center text-purple-700 mb-1">
+      <form
+        onSubmit={submitHandler}
+        className="bg-white p-8 w-full max-w-sm rounded-2xl shadow-2xl border border-gray-200 overflow-y-auto min-h-[650px] flex flex-col"
+      >
+        <h1 className="text-3xl font-extrabold font-serif text-left text-purple-700 mb-1">
           Create your PopX account
         </h1>
-        <p className="text-center text-gray-600 text-sm mb-6">Sign in to get started</p>
+        <p className="text-left text-gray-600 text-sm mb-6">Sign in to get started</p>
 
-        <form onSubmit={submitHandler} className="space-y-5">
+        {/* Inputs & radio buttons container grows to push button down */}
+        <div className="flex-grow space-y-5">
           <input
             type="text"
             name="fullName"
@@ -55,7 +59,7 @@ export default function Signin() {
             onChange={changeHandler}
             placeholder="Full Name"
             required
-            className="w-full px-4 py-3 text-black border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-purple-400 focus:outline-none"
+            className="w-full p-3 border border-gray-300 text-black rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500"
           />
 
           <input
@@ -65,7 +69,7 @@ export default function Signin() {
             onChange={changeHandler}
             placeholder="Phone Number"
             required
-            className="w-full px-4 py-3 border text-black border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-purple-400 focus:outline-none"
+            className="w-full p-3 border border-gray-300 text-black rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500"
           />
 
           <input
@@ -75,7 +79,7 @@ export default function Signin() {
             onChange={changeHandler}
             placeholder="Email Address"
             required
-            className="w-full px-4 py-3  text-black border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-purple-400 focus:outline-none"
+            className="w-full p-3 border border-gray-300 text-black rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500"
           />
 
           <input
@@ -85,7 +89,7 @@ export default function Signin() {
             onChange={changeHandler}
             placeholder="Password"
             required
-            className="w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-purple-400 focus:outline-none text-black"
+            className="w-full p-3 border border-gray-300 text-black rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500"
           />
 
           <div>
@@ -119,15 +123,16 @@ export default function Signin() {
               </label>
             </div>
           </div>
+        </div>
 
-          <button
-            type="submit"
-            className="w-full bg-purple-600 hover:bg-purple-700 transition duration-200 text-white font-bold py-3 rounded-md shadow-md"
-          >
-            Create my account
-          </button>
-        </form>
-      </div>
+        {/* Button pushed to bottom with margin-top */}
+        <button
+          type="submit"
+          className="w-full py-3 mt-8 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-lg shadow-md transition duration-200 focus:outline-none focus:ring-2 focus:ring-purple-400"
+        >
+          Create my account
+        </button>
+      </form>
     </div>
   );
 }
