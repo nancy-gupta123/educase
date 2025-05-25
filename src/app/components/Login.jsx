@@ -25,28 +25,24 @@ export default function Login() {
   ];
 
   const submitHandler = (e) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  const users = JSON.parse(localStorage.getItem('users')) || [];
+    // Check if the user exists in dummyUsers
+    const matchedUser = dummyUsers.find(
+      (user) =>
+        user.emailAddress === entry.emailAddress &&
+        user.password === entry.password
+    );
 
-  // Check if the user exists
-  const matchedUser = users.find(
-    (user) =>
-      user.fullName === entry.fullName &&
-      user.emailAddress === entry.emailAddress &&
-      user.password === entry.password
-  );
-
-  if (matchedUser) {
-    // Store the logged-in user
-    localStorage.setItem('loggedInUser', JSON.stringify(matchedUser));
-    alert('Login successful!');
-    router.push('/profile');
-  } else {
-    alert('Invalid credentials!');
-  }
-};
-
+    if (matchedUser) {
+      // Store the logged-in user
+      localStorage.setItem('loggedInUser', JSON.stringify(matchedUser));
+      alert('Login successful!');
+      router.push('/profile');
+    } else {
+      alert('Invalid credentials!');
+    }
+  };
 
   const changeHandler = (e) => {
     const { name, value } = e.target;
@@ -85,7 +81,7 @@ export default function Login() {
           </div>
 
           <div>
-            <label className="block mb-1 text-sm font-medium text-gray-700 ">
+            <label className="block mb-1 text-sm font-medium text-gray-700">
               Password
             </label>
             <input
@@ -120,3 +116,4 @@ export default function Login() {
     </div>
   );
 }
+
